@@ -1,38 +1,261 @@
-.App {
-  text-align: center;
+/* Reset some default browser styles */
+body, h1, ul, li {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Apply a background color */
+body {
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Style the header */
+h1 {
+  background-color: #50b3a2;
   color: white;
+  text-align: center;
+  padding: 1em;
+  border-bottom: 3px solid #333;
 }
 
-.App-link {
-  color: #61dafb;
+/* Add border to titles */
+h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style the input and button */
+input[type="text"],
+input[type="datetime-local"],
+button {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
+
+button {
+  background-color: #50b3a2;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+/* Style the React calendar */
+.rbc-calendar {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.rbc-event:hover {
+  cursor: pointer;
+  z-index: 9999;
+  background-color: #333;
+}
+
+.notification {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* Different design for sticky notifications */
+.sticky-notification {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #FF5733;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* Fixed bar at the bottom */
+.fixed-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.8); /* Making it transparent */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  transition: width 1s ease; /* Smooth transition for width change */
+}
+
+.progress-chart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+progress {
+  width: 100%;
+}
+
+.custom-event {
+  color: white;
+  border: 1px solid #ccc;
+}
+
+.format-guide {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Styling for completed tasks */
+.completed-tasks ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.completed-tasks li {
+  background: linear-gradient(45deg, #4CAF50, #81C784);
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.completed-tasks li::before {
+  content: '🎉';
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+}
+
+.completed-tasks li:hover {
+  transform: scale(1.05);
+}
+
+.completed-tasks li:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.congratulatory-notification {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 2px solid gold;
+  animation: celebration 1s ease infinite;
+}
+
+@keyframes celebration {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .notification {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-mode .progress-chart {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-mode .completed-tasks {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-mode button {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.dark-mode button:hover {
+  background-color: #444444;
+}
+
+.dark-mode .congratulatory-notification {
+  background-color: #00cc00;
+  color: #ffffff;
+}
+
+.dark-mode .sticky-notification {
+  background-color: #ffcc00;
+  color: #000000;
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Additional styles for LandingPage */
+.landing-page {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center; /* Align text to center */
+}
+
+.landing-page h1 {
+  font-size: 2.5em; /* Increase font size */
+  text-shadow: 2px 2px 4px #000000; /* Add text shadow */
+}
+
+.landing-page p {
+  font-size: 1.2em; /* Increase font size */
+}
+
+.landing-page.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
